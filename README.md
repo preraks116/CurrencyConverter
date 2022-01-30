@@ -1,7 +1,7 @@
 ## Brief Description of our project
 ## Project on Currency 
 ## Team 4
-> Prerak Srivastava ,Shubh Karman Bhullar, Knv Karthikeya, Rohan Madinei ,Sai Aaditya
+> Prerak Srivastava ,Shubh Karman Bhullar, Knv Karthikeya, Rohan Madinei
 ## TA assigned
 > Dhruv Sharma
 
