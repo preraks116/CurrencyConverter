@@ -13,7 +13,7 @@
 - For an automated experience using the input program: `./a.out < Input.txt`
 
 ### Manual Input 
-Although this steps aren't required but the make your terminal look clean.
+**Although this steps aren't required but the make your terminal look clean.**
 1. Uncomment the lines 294,295,296,353,354,355,438,439,440,467,468,469,500,501,502,506,507,508,547,548,549 in `currency2.c`.
 2. Uncomment the lines 22,23,24,27,28,29 and 164,165,166 in `main2.c`.
 3. Comment the line 366 in `currency2.c`.
@@ -21,7 +21,7 @@ Although this steps aren't required but the make your terminal look clean.
 
 
 ### 2 : Input through a program
-Although this steps aren't required but the make your terminal look clean.
+**Although this steps aren't required but the make your terminal look clean.**
 1. Comment the lines 294,295,296,353,354,355,438,439,440,467,468,469,500,501,502,506,507,508,547,548,549 in `currency2.c`.
 2. Comment the lines 22,23,24,27,28,29 and 164,165,166  in `main2.c`.
 3. Uncomment the line 366 in `currency2.c`.
@@ -30,10 +30,9 @@ Although this steps aren't required but the make your terminal look clean.
     1. Enter the total number of banks (bankno).
     2. For the next bankno lines the ith line contains 2 integers 1st one represents the number of curriences in the ith bank and 2nd one represents the density index of the graph  
 
-$$ 
-Density \ of \ graph \ 1 \ > \ density \ of \ graph \ 2 \ 
- \ if \ density \ index \ 1 \ < \ density \ index \ 2 
-$$
+```
+Density of graph 1 > density of graph 2 if density index 1 < density index 2 
+```
  ---
 6. The input should look something like this
 
@@ -67,8 +66,8 @@ We have heavily relied on data structures like graphs as it was easier to store 
 5. Each currency is linked to the other on the basis of the input given by the user.
 6. Application of various algorithms like DFS,BFS,Dijkstra etc depending on which gives us the best case scenario in finding out the best path to convert a given currency A to a given currency B.
 7. Example : If all the weights of the graph are equal it is better to use BFS rather than Dijkstra as it gives us a faster result as 
-$$ 
-Time \ complexity \ of BFS \ is \ O(V + E) \ as \ Dijkstras \ is \ O(V + E(log(V))) 
-$$
+``` 
+Time complexity of BFS is O(V + E) as Dijkstras is O(V + E(log(V))) 
+```
 
 
