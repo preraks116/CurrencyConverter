@@ -1,3 +1,6 @@
+#ifndef DEFS_H_
+#define DEFS_H_
+
 #include <assert.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -7,16 +10,7 @@
 
 #define max 1e5 + 5
 #define max 1e5 + 5
-#define BOLD "\033[1m"
-#define NO_BOLD "\033[22m"
-#define RED "\033[38;5;1m"
-#define GREEN "\033[38;5;121m"
-#define ORANGE "\033[38;5;209m"
-#define PURPLE "\033[38;5;205m"
-#define LIGHT_PINK "\033[38;5;225m"
-#define LIGHT_PURPLE "\033[38;5;213m"
-#define YELLOW "\033[38;5;223m"
-#define RESET "\033[0m"
+
 
 typedef struct bankNode BankNode;
 typedef struct bankNode * PtrBankNode;
@@ -27,19 +21,6 @@ typedef struct currFromNode * PtrCurrFromNode;
 typedef struct currToNode CurrToNode;
 typedef struct currToNode * PtrCurrToNode;
 
-typedef struct ListNode ListNode;
-typedef struct ListNode *PtrListNode;
-
-typedef struct PQueueNode PQueueNode;
-typedef struct PQueueNode * PtrPQueueNode;
-typedef struct PQueueNode ** PtrPtrPQueueNode;
-
-typedef struct PQueue PQueue;
-typedef struct PQueue * PtrPQueue;
-
-typedef struct store store;
-typedef struct store * Ptrstore;
-
 struct bankNode //these nodes contain information about the banks that have been added
 {
     char bankname[20]; //name of the bank
@@ -47,7 +28,6 @@ struct bankNode //these nodes contain information about the banks that have been
     PtrBankNode next; // points to the next bankNode
     PtrCurrFromNode Currhead; //points to the first node in the adjacency matrix
 };
-
 
 // Every conversion is done FROM a currency TO a currency, so 2 different structs have been defined for the same
 // Currencies in each bank are stored in the form of adjacency matrix
@@ -67,33 +47,6 @@ struct currToNode
     PtrCurrToNode next; //points to the next CurrToNode
 };
 
-struct ListNode //struct for the adjacency list
-{
-    int index; //index of each node in the graph
-    int currconv; //stores the weight of each edge in the graph, which is the conversion rate
-    PtrListNode next; //points to the next List node
-};
-
-struct PQueueNode   //minheap nodes
-{
-    int  n;//Vertex no. or index of vertex
-    int dist;// will store the current distance value of vertex
-};
-
-struct PQueue
-{
-    int size;   // No. of heapnodes in Pqueue present,capacity  will remain same but size will decrease when minnodes will be extracted 
-    int capacity; // No. of vertices in this particular graph
-    int *position; // To keep track of the position of vertex in minheap,can directly access that vertex in minheap  as its position is stored here
-    PtrPtrPQueueNode node; //Will point to PqueueNode or minheap nodes
-};
-
-struct store
-{
-    int cost;
-    char bankname[20];
-};
-
 PtrBankNode InitBankNode();
 PtrBankNode findBank(PtrBankNode BankHead, char bankname[]);
 
@@ -104,20 +57,11 @@ PtrCurrFromNode addCurrFromNode(PtrCurrFromNode CurrHead, char currname[]);
 PtrCurrToNode InitCurrToNode();
 PtrCurrToNode findCurrToNode(PtrCurrFromNode TrvCurrFrom, char currname[]);
 
-PtrListNode InitListNode();
-
-struct PQueueNode *newPNode(int n, int dist);
-struct PQueueNode *extractMin(struct PQueue *pQueue);
-
-struct PQueue *createPQueue(int capacity);
-
 bool BankDoesntExist(PtrBankNode BankHead, char bankname[],int mode);
 bool NoBanksExist(PtrBankNode BankHead,int mode);
 bool CurrencyAlreadyPresent(PtrCurrFromNode TrvCurrFrom, char currname[],int mode);
 bool NoCurrencyExists(PtrBankNode BankHead, char bankname[],int mode);
-bool IsInPqueue(struct PQueue *pQueue, int n);
 bool cycle(PtrBankNode BankHead,char bankname[]);
-bool iscycle(PtrListNode P,bool visited[],bool stack[],PtrListNode AdjList[]);
 
 void addBank(PtrBankNode BankHead, char bankname[]);
 void printBanks(PtrBankNode BankHead);
@@ -128,13 +72,9 @@ void delCurr(PtrBankNode BankHead, char currname[],char bankname[],int mode);
 void findLoc(PtrCurrFromNode P, char currfrom[],char currto[],float currconv);
 void addConv(PtrBankNode BankHead,char currfrom[],char currto[],float currconv, char bankname[], int mode);
 void delBank(PtrBankNode BankHead,char bankname[]);
-void swapMinHeapNode(struct PQueueNode **a, struct PQueueNode **b);
-void minHeapify(struct PQueue *pQueue, int index);
-void decreaseKey(struct PQueue *pQueue, int n, int dist);
 void bestConv(PtrBankNode BankHead,char currfrom[],char currto[]);
 
-int cmpfunc(const void *p, const void *q);
-int isEmpty(struct PQueue *pQueue);
 int getConv(PtrCurrFromNode P, char currfrom[], char currto[]);
 int getList(PtrBankNode BankHead, char currfrom[], char currto[], char bankname[]);
 
+#endif
