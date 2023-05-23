@@ -13,15 +13,13 @@ $ gcc main.c src/bank.c src/currency.c src/graph.c -o main
 $ ./main
 ```
 
-### Input through a program
-
-**Although this steps aren't required but the make your terminal look clean.**
+### Automated Input
 
 To run the input program
 
 ```
-gcc inputprogram.c -o input
-./input > input.txt
+$ gcc inputprogram.c -o input
+$ ./input > input.txt
 ```
 
 The method to enter the input in `inputprogram.c` is as follows:
